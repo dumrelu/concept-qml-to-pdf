@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QQmlEngine>
+#include <QQuickItem>
 
 class QmlToPdfExporter : public QObject
 {
@@ -13,6 +14,8 @@ class QmlToPdfExporter : public QObject
 public:
     explicit QmlToPdfExporter(QObject *parent = nullptr);
 
+    Q_INVOKABLE void exportToPdf(QQuickItem* item);
+
     QString outputFile() const { return m_outputFile; }
     bool exportInProgress() const { return m_exportInProgress; }
 
@@ -20,6 +23,9 @@ public:
     void setExportInProgress(bool value);
 
 signals:
+    void exportDone();
+    void exportError(QString errorMessage);
+
     void outputFileChanged();
     void exportInProgressChanged();
 

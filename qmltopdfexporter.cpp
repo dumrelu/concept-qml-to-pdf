@@ -5,6 +5,11 @@ QmlToPdfExporter::QmlToPdfExporter(QObject *parent)
 {
 }
 
+void QmlToPdfExporter::exportToPdf(QQuickItem *item)
+{
+
+}
+
 void QmlToPdfExporter::setOutputFile(QString outputFileName)
 {
     if(m_outputFile != outputFileName)

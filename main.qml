@@ -11,6 +11,15 @@ Window {
 
     QmlToPdfExporter {
         id: qmlToPdfExporter
+        outputFile: "/tmp/sample_qml_to_pdf.pdf"
+
+        onExportDone: function() {
+           console.log("Exported pdf: %s".arg(qmlToPdfExporter.outputFile));
+        }
+
+        onExportError: function(errorMessage) {
+            console.warn("Export to pdf error: %1".arg(errorMessage));
+        }
     }
 
     Item {
@@ -66,6 +75,15 @@ Window {
                 Layout.fillWidth: true
                 wrapMode: Text.Wrap
                 text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+            }
+
+            Button {
+                Layout.alignment: Qt.AlignHCenter
+                text: "Print to pdf(%1)".arg(qmlToPdfExporter.outputFile)
+
+                onClicked: function() {
+                    qmlToPdfExporter.exportToPdf(itemToBePrintedToPdf);
+                }
             }
         }
     }
