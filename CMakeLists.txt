@@ -8,11 +8,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
 
 qt_add_executable(appconcept-qml-to-pdf
+    qmltopdfexporter.h qmltopdfexporter.cpp
     main.cpp
 )
 
 qt_add_qml_module(appconcept-qml-to-pdf
-    URI concept-qml-to-pdf
+    URI concept_qml_to_pdf
     VERSION 1.0
     QML_FILES main.qml 
 )
