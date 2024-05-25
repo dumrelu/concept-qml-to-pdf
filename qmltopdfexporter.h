@@ -5,6 +5,9 @@
 #include <QQmlEngine>
 #include <QQuickItem>
 
+//! WARNING: This is just to simplify the proof of concept. Don't do this
+#include <private/qquicktext_p.h>
+
 class QmlToPdfExporter : public QObject
 {
     Q_OBJECT
@@ -30,6 +33,10 @@ signals:
     void exportInProgressChanged();
 
 private:
+    void onGrabImageReady(QQuickItem* item, QSharedPointer<QQuickItemGrabResult> grabResult);
+    QList<QQuickText*> findTextItems(QQuickItem* item) const;
+    QTextOption getTextOption(QQuickText* textItem) const;
+
     QString m_outputFile = "/tmp/my_file.pdf";
     bool m_exportInProgress = false;
 };
