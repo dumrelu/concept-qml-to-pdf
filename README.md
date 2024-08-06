@@ -1,6 +1,6 @@
 # concept-qml-to-pdf
 
-A simple proof of concept for printing qml items to pdf. 
+A simple proof of concept for a technique to print QML items to pdf.
 
 If you want a quick and easy way of creating a pdf file for a page in your app(and without having to change the application) you can simply grab an image and add it to a pdf file. See a sample here of how that pdf could look like: [sample_qml_image](sample_qml_image.pdf)
 
